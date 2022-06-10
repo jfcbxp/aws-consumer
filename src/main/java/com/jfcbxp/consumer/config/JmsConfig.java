@@ -18,7 +18,7 @@ import javax.jms.Session;
 public class JmsConfig {
 
     @Value("${aws.region}")
-    private  String awsRegion;
+    private String awsRegion;
 
     private SQSConnectionFactory sqsConnectionFactory;
 
