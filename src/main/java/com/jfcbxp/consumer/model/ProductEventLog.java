@@ -48,6 +48,11 @@ public class ProductEventLog {
     @DynamoDBAttribute(attributeName = "ttl")
     private long ttl;
 
+    @Getter
+    @Setter
+    @DynamoDBAttribute(attributeName = "messageId")
+    private String messageId;
+
     @DynamoDBHashKey(attributeName = "pk")
     public String getPk() {
         return this.productEventKey != null ? this.productEventKey.getPk() : null;

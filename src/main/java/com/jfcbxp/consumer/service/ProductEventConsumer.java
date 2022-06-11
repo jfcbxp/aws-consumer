@@ -47,12 +47,12 @@ public class ProductEventConsumer {
                 productEvent.getProductId(),
                 snsMessage.getMessageId());
 
-        ProductEventLog productEventLog = buildProductEventLog(envelope, productEvent);
+        ProductEventLog productEventLog = buildProductEventLog(envelope, productEvent, snsMessage.getMessageId());
         productEventLogRepository.save(productEventLog);
 
     }
 
-    private ProductEventLog buildProductEventLog(Envelope envelope, ProductEvent productEvent) {
+    private ProductEventLog buildProductEventLog(Envelope envelope, ProductEvent productEvent, String messageId) {
 
         ProductEventLog productEventLog = new ProductEventLog();
         productEventLog.setPk(productEvent.getCode());
@@ -62,6 +62,7 @@ public class ProductEventConsumer {
         productEventLog.setUsername(productEvent.getUsername());
         productEventLog.setTimestamp(Instant.now().toEpochMilli());
         productEventLog.setTtl(Instant.now().plus(Duration.ofMinutes(10)).getEpochSecond());
+        productEventLog.setMessageId(messageId);
 
 
         return productEventLog;

@@ -18,12 +18,15 @@ public class ProductEventLogDTO {
     private String username;
     private long timestamp;
 
+    private String messageId;
+
     public ProductEventLogDTO(ProductEventLog productEventLog) {
         this.code = productEventLog.getPk();
         this.eventType = productEventLog.getEventType();
         this.productId = productEventLog.getProductId();
         this.username = productEventLog.getUsername();
         this.timestamp = productEventLog.getTimestamp();
+        this.messageId = productEventLog.getMessageId();
     }
 
 }
